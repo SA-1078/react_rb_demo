@@ -1,4 +1,4 @@
-/// import React from "react";
+///
 
 // Importa SOLO uno a la vez:
 {/*
@@ -40,7 +40,7 @@ export default function App() {
 }
     */}
 
-    
+
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
