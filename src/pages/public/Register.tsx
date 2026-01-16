@@ -5,7 +5,6 @@ import { useAuth } from "../../context/AuthContext";
 
 export default function Register(): JSX.Element {
     const [username, setUsername] = useState("");
-    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState<string | null>(null);
 
@@ -16,7 +15,7 @@ export default function Register(): JSX.Element {
         e.preventDefault();
         try {
             setError(null);
-            await register({ username, email, password });
+            await register({ username, password });
             navigate("/dashboard", { replace: true });
         } catch {
             setError("No se pudo registrar. Revisa los datos o intenta más tarde.");
@@ -34,14 +33,6 @@ export default function Register(): JSX.Element {
                     label="Username"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
-                    required
-                />
-
-                <TextField
-                    label="Email"
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
                     required
                 />
 

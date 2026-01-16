@@ -11,7 +11,7 @@ type AuthContextType = {
     user: User | null;
     token: string | null;
     login: (payload: { username: string; password: string }) => Promise<void>;
-    register: (payload: { username: string; email: string; password: string }) => Promise<void>;
+    register: (payload: { username: string; password: string }) => Promise<void>;
     logout: () => void;
 };
 
@@ -40,18 +40,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         );
     };
 
-    const register = async (payload: { username: string; email: string; password: string }) => {
+    const register = async (payload: { username: string; password: string }) => {
         const token = await registerApi(payload);
 
         setToken(token);
-        setUser({ username: payload.username, email: payload.email });
+        setUser({ username: payload.username });
 
         localStorage.setItem("auth_token", token);
         localStorage.setItem(
             "auth_user",
             JSON.stringify({
                 username: payload.username,
-                email: payload.email,
             })
         );
     };

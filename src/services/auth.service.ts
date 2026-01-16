@@ -20,9 +20,11 @@ export async function loginApi(payload: {
 
 export async function registerApi(payload: {
     username: string;
-    email: string;
     password: string;
 }): Promise<string> {
-    const { data } = await api.post<SuccessResponseDto<AuthTokenData>>("/auth/register", payload);
+    const { data } = await api.post<SuccessResponseDto<AuthTokenData>>("/auth/register", {
+        username: payload.username,
+        password: payload.password,
+    });
     return data.data.access_token;
 }

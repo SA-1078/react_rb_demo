@@ -6,3 +6,5 @@ export default function App(): JSX.Element {
   const routes = useRoutes(appRoutes);
   return <>{routes}</>;
 }
+
+
